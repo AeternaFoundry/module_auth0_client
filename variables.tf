@@ -555,10 +555,10 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.clients : (
-        v.description == null || (length(v.description) >= 0 && length(v.description) <= 140)
+        v.description == null || (length(v.description) <= 140)
       )
     ])
-    error_message = "must be between 0 and 140 characters"
+    error_message = "must be at most 140 characters"
   }
   validation {
     condition = alltrue([
